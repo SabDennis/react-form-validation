@@ -24,32 +24,6 @@ form {
     flex-wrap: wrap;
 }
 
-h1 {
-    text-align: center;
-    width: 100%;
-    color: #111;
-}
-
-label {
-    font-size: 21px;
-    color: rgb(82, 75, 75);
-    margin-bottom: 0.25em;
-}
-
-input, select {
-    padding: 10px 10px;
-    border-radius: 7px;
-    outline: none;
-    border: 1px solid #5FA8D3;
-}
-
-input::placeholder, select {
-    font-size: 18px;
-    color: #999;
-}
-
-/* position */
-
 .firstName,
 .lastName,
 .email,
@@ -81,6 +55,30 @@ input::placeholder, select {
 .firstName,
 .continent {
     margin-right: 1%;
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+    color: #111;
+}
+
+label {
+    font-size: 21px;
+    color: rgb(82, 75, 75);
+    margin-bottom: 0.25em;
+}
+
+input, select {
+    padding: 10px 10px;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #5FA8D3;
+}
+
+input::placeholder, select {
+    font-size: 18px;
+    color: #999;
 }
 
 legend {

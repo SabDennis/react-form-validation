@@ -8,7 +8,7 @@ class Form extends React.Component {
         lastName: '',
         email: '',
         phoneNumber: '',
-        continent: '',
+        continent: 'Earth',
         sex: '',
         activities: {
             sport: false,
@@ -45,7 +45,7 @@ class Form extends React.Component {
             this.setState({ errors: { phoneNumberError: 'Invalid phone number' } });
             return false;
         }
-        
+
         return true;
     };
 
@@ -86,7 +86,7 @@ class Form extends React.Component {
                                 onChange={this.handleChange}
                                 placeholder={this.state.errors.firstNameError
                                     ? this.state.errors.firstNameError
-                                    : "First Name"} />
+                                    : "John"} />
                         </div>
                         <div className="lastName">
                             <label htmlFor="lastName">Last Name</label>
@@ -97,7 +97,7 @@ class Form extends React.Component {
                                 onChange={this.handleChange}
                                 placeholder={this.state.errors.lastNameError
                                     ? this.state.errors.lastNameError
-                                    : "Last Name"} />
+                                    : "Locke"} />
                         </div>
                         <div className="email">
                             <label htmlFor="email">Email</label>
@@ -109,7 +109,7 @@ class Form extends React.Component {
                                 onChange={this.handleChange}
                                 placeholder={this.state.errors.emailError
                                     ? this.state.errors.emailError
-                                    : "Email"} />
+                                    : "johnlocke@example.com"} />
                         </div>
                         <div className="phoneNumber">
                             <label htmlFor="phoneNumber">Telephone</label>
@@ -121,7 +121,7 @@ class Form extends React.Component {
                                 type="tel"
                                 placeholder={this.state.errors.phoneNumberError
                                     ? this.state.errors.phoneNumberError
-                                    : "Phone number"} />
+                                    : "+7 (945) 456-75-24"} />
                         </div>
                         <div className="continent">
                             <label htmlFor="continent">Continent</label>
@@ -145,7 +145,8 @@ class Form extends React.Component {
                                 id="date"
                                 value={this.state.date}
                                 onChange={this.handleChange}
-                                type="date" />
+                                type="date"
+                                required />
                         </div>
                         <fieldset className="gender">
                             <legend>Gender</legend>

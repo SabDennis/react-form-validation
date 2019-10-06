@@ -23,7 +23,6 @@ class Form extends React.Component {
             lastNameError: '',
             emailError: '',
             phoneNumberError: '',
-            dateError: ''
         }
     };
 
@@ -46,38 +45,28 @@ class Form extends React.Component {
             this.setState({ errors: { phoneNumberError: 'Invalid phone number' } });
             return false;
         }
-
-        if (this.state.sex === '') {
-            this.setState({ errors: { phoneNumberError: 'Invalid sex' } });
-            return false;
-        }
-
-        if (this.state.date === '') {
-            this.setState({ errors: { dateError: 'Invalid date' } });
-            return false;
-        }
-
+        
         return true;
     };
 
-    handleChange = event => {
-        const isCheckbox = event.target.type === 'checkbox';
+    handleChange = e => {
+        const isCheckbox = e.target.type === 'checkbox';
 
         if (isCheckbox) {
             const activities = this.state.activities;
             for (let activity in activities) {
-                if (activity === event.target.value) {
-                    activities[activity] = event.target.checked;
+                if (activity === e.target.value) {
+                    activities[activity] = e.target.checked;
                 }
             }
             this.setState({ activities: activities });
         } else {
-            this.setState({ [event.target.name]: event.target.value });
+            this.setState({ [e.target.name]: e.target.value });
         }
     };
 
-    handleSubmit = event => {
-        event.preventDefault();
+    handleSubmit = e => {
+        e.preventDefault();
         const isValid = this.validation();
         if (isValid) { console.log(this.state) }
     };
@@ -118,8 +107,9 @@ class Form extends React.Component {
                                 type="email"
                                 value={this.state.email}
                                 onChange={this.handleChange}
-                                placeholder="Email" />
-                            {this.state.errors.emailError ? <p>{this.state.errors.emailError}</p> : null}
+                                placeholder={this.state.errors.emailError
+                                    ? this.state.errors.emailError
+                                    : "Email"} />
                         </div>
                         <div className="phoneNumber">
                             <label htmlFor="phoneNumber">Telephone</label>
@@ -129,8 +119,9 @@ class Form extends React.Component {
                                 value={this.state.phoneNumber}
                                 onChange={this.handleChange}
                                 type="tel"
-                                placeholder="Phone Number" />
-                            {this.state.errors.phoneNumberError ? <p>{this.state.errors.phoneNumberError}</p> : null}
+                                placeholder={this.state.errors.phoneNumberError
+                                    ? this.state.errors.phoneNumberError
+                                    : "Phone number"} />
                         </div>
                         <div className="continent">
                             <label htmlFor="continent">Continent</label>
@@ -155,7 +146,6 @@ class Form extends React.Component {
                                 value={this.state.date}
                                 onChange={this.handleChange}
                                 type="date" />
-                            {this.state.errors.dateError ? <p>{this.state.errors.dateError}</p> : null}
                         </div>
                         <fieldset className="gender">
                             <legend>Gender</legend>
@@ -174,7 +164,7 @@ class Form extends React.Component {
                                 type="radio" />
                             <label htmlFor="female">Female</label>
                         </fieldset>
-                        <fieldset class="checkbox">
+                        <fieldset className="checkbox">
                             <legend>Activities</legend>
                             <input
                                 type="checkbox"

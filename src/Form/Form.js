@@ -83,129 +83,134 @@ class Form extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}> Customer Information:
-                <div>
-                    <label>
-                        <input
-                            name="firstName"
-                            value={this.state.firstName}
-                            onChange={this.handleChange}
-                            placeholder="First Name" />
-                    </label>
-                    {this.state.errors.firstNameError
-                        ? <p>{this.state.errors.firstNameError}</p>
-                        : null}
-                    <label>
-                        <input
-                            name="lastName"
-                            value={this.state.lastName}
-                            onChange={this.handleChange}
-                            placeholder="Last Name" />
-                    </label>
-                    {this.state.errors.lastNameError
-                        ? <p>{this.state.errors.lastNameError}</p>
-                        : null}
+            <div className="container">
+                <div className="form-container">
+                    <h1>Customer Information</h1>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="firstName">
+                            <label htmlFor="firstName">First Name</label>
+                            <input
+                                name="firstName"
+                                id="firstName"
+                                value={this.state.firstName}
+                                onChange={this.handleChange}
+                                placeholder="First Name" />
+                            {this.state.errors.firstNameError ? <p>{this.state.errors.firstNameError}</p> : null}
+                        </div>
+                        <div className="lastName">
+                            <label htmlFor="lastName">Last Name</label>
+                            <input
+                                name="lastName"
+                                id="lastName"
+                                value={this.state.lastName}
+                                onChange={this.handleChange}
+                                placeholder="Last Name" />
+                            {this.state.errors.lastNameError ? <p>{this.state.errors.lastNameError}</p> : null}
+                        </div>
+                        <div className="email">
+                            <label htmlFor="email">Email</label>
+                            <input
+                                name="email"
+                                id="email"
+                                type="email"
+                                value={this.state.email}
+                                onChange={this.handleChange}
+                                placeholder="Email" />
+                            {this.state.errors.emailError ? <p>{this.state.errors.emailError}</p> : null}
+                        </div>
+                        <div className="phoneNumber">
+                            <label htmlFor="phoneNumber">PhoneNumber</label>
+                            <input
+                                name="phoneNumber"
+                                id="phoneNumber"
+                                value={this.state.phoneNumber}
+                                onChange={this.handleChange}
+                                type="tel"
+                                placeholder="Phone Number" />
+                            {this.state.errors.phoneNumberError ? <p>{this.state.errors.phoneNumberError}</p> : null}
+                        </div>
+                        <div className="continent">
+                            <label htmlFor="continent">Continent</label>
+                            <select
+                                name='continent'
+                                id="continent"
+                                value={this.state.continent}
+                                onChange={this.handleChange}>
+                                <option value="Eurasia">Eurasia</option>
+                                <option value="Africa">Africa</option>
+                                <option value="America">North America</option>
+                                <option value="South America">South America</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Antarctica">Antarctica</option>
+                            </select>
+                        </div>
+                        <div className="sex">
+                            <label htmlFor="male">Male</label>
+                            <input
+                                name="sex"
+                                id="male"
+                                value="Male"
+                                onChange={this.handleChange}
+                                type="radio" />
+                            <label htmlFor="female">Female</label>
+                            <input
+                                name="sex"
+                                id="female"
+                                value="Female"
+                                onChange={this.handleChange}
+                                type="radio" />
+                        </div>
+                        <div className="checkbox">
+                            <label htmlFor="sport">Sport</label>
+                            <input
+                                type="checkbox"
+                                id="sport"
+                                value="sport"
+                                onChange={this.handleChange}
+                                checked={this.state.activities.sport} />
+                            <label htmlFor="coding">Coding</label>
+                            <input
+                                type="checkbox"
+                                id="coding"
+                                value="coding"
+                                onChange={this.handleChange}
+                                checked={this.state.activities.coding} />
+                            <label htmlFor="videogames">Videogames</label>
+                            <input
+                                type="checkbox"
+                                id="videogames"
+                                value="videogames"
+                                onChange={this.handleChange}
+                                checked={this.state.activities.videogames} />
+                            <label htmlFor="art">Art</label>
+                            <input
+                                type="checkbox"
+                                id="art"
+                                value="art"
+                                onChange={this.handleChange}
+                                checked={this.state.activities.art} />
+                            <label htmlFor="music">Music</label>
+                            <input
+                                type="checkbox"
+                                id="music"
+                                value="music"
+                                onChange={this.handleChange}
+                                checked={this.state.activities.music} />
+                        </div>
+                        <div className="date">
+                            <label htmlFor="date">Today date</label>
+                            <input
+                                name="date"
+                                id="date"
+                                value={this.state.date}
+                                onChange={this.handleChange}
+                                type="date" />
+                            {this.state.errors.dateError ? <p>{this.state.errors.dateError}</p> : null}
+                        </div>
+                        <button type="submit">Submit</button>
+                    </form>
                 </div>
-                <div>
-                    <label>
-                        <input
-                            name="email"
-                            value={this.state.email}
-                            onChange={this.handleChange}
-                            placeholder="Email" />
-                    </label>
-                    {this.state.errors.emailError
-                        ? <p>{this.state.errors.emailError}</p>
-                        : null}
-                    <label>
-                        <input
-                            name="phoneNumber"
-                            value={this.state.phoneNumber}
-                            onChange={this.handleChange}
-                            placeholder="Phone Number" />
-                    </label>
-                    {this.state.errors.phoneNumberError
-                        ? <p>{this.state.errors.phoneNumberError}</p>
-                        : null}
-                </div>
-                <select
-                    name='continent'
-                    value={this.state.continent}
-                    onChange={this.handleChange}>
-                    <option value="Eurasia">Eurasia</option>
-                    <option value="Africa">Africa</option>
-                    <option value="America">North America</option>
-                    <option value="South America">South America</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Antarctica">Antarctica</option>
-                </select>
-                <div>
-                    <label> Male
-                        <input
-                            name="sex"
-                            value="Male"
-                            onChange={this.handleChange}
-                            type="radio" />
-                    </label>
-                    <label> Female
-                        <input
-                            name="sex"
-                            value="Female"
-                            onChange={this.handleChange}
-                            type="radio" />
-                    </label>
-                </div>
-                <div>
-                    <label>Sport
-                        <input
-                            type="checkbox"
-                            value="sport"
-                            onChange={this.handleChange}
-                            checked={this.state.activities.sport} />
-                    </label>
-                    <label>Coding
-                        <input
-                            type="checkbox"
-                            value="coding"
-                            onChange={this.handleChange}
-                            checked={this.state.activities.coding} />
-                    </label>
-                    <label>Videogames
-                        <input
-                            type="checkbox"
-                            value="videogames"
-                            onChange={this.handleChange}
-                            checked={this.state.activities.videogames} />
-                    </label>
-                    <label>Art
-                        <input
-                            type="checkbox"
-                            value="art"
-                            onChange={this.handleChange}
-                            checked={this.state.activities.art} />
-                    </label>
-                    <label>Music
-                        <input
-                            type="checkbox"
-                            value="music"
-                            onChange={this.handleChange}
-                            checked={this.state.activities.music} />
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input
-                            name="date"
-                            value={this.state.date}
-                            onChange={this.handleChange}
-                            type="date" />
-                    </label>
-                    {this.state.errors.dateError
-                        ? <p>{this.state.errors.dateError}</p>
-                        : null}
-                </div>
-                <button type="submit">Submit</button>
-            </form>
+            </div>
         );
     };
 };

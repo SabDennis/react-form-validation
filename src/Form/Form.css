@@ -1,0 +1,137 @@
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #5FA8D3;
+}
+
+.form-container {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 35px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 10px 50px #555;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+    color: #111;
+}
+
+label {
+    font-size: 21px;
+    color: rgb(82, 75, 75);
+    margin-bottom: 0.25em;
+}
+
+input, select {
+    padding: 10px 10px;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #5FA8D3;
+}
+
+input::placeholder, select {
+    font-size: 18px;
+    color: #999;
+}
+
+/* position */
+
+.firstName,
+.lastName,
+.email,
+.phoneNumber,
+.continent,
+.date,
+.radio {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.firstName,
+.lastName,
+.email,
+.phoneNumber,
+.continent,
+.date {
+    width: 49%;
+}
+
+.phoneNumber,
+.lastName,
+.date {
+    margin-left: 1%; 
+}
+
+.email,
+.firstName,
+.continent {
+    margin-right: 1%;
+}
+
+legend {
+    font-size: 21px;
+    color: #222;
+}
+
+fieldset {
+    border: 1px solid #5FA8D3;
+    border-radius: 7px;
+    color: #222;
+}
+
+.gender, .checkbox {
+    width: 100%;
+}
+
+select {
+    color: #222;
+}
+
+.checkbox label {
+    display: inline-block;
+    padding-right: 10px;
+    white-space: nowrap; 
+    vertical-align: middle;
+}
+
+.checkbox input {
+    vertical-align: middle;
+  }
+
+/* button */
+
+.submitBtn {
+    background-color: #5FA8D3;
+    color: #fff;
+    border: 2px solid #fff;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 21px;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.submitBtn:hover {
+    color: #5FA8D3;
+    background-color: #fff;
+    border: 2px solid #5FA8D3;
+}
+

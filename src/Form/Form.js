@@ -1,4 +1,5 @@
 import React from "react";
+import './Form.css';
 
 class Form extends React.Component {
 
@@ -94,8 +95,9 @@ class Form extends React.Component {
                                 id="firstName"
                                 value={this.state.firstName}
                                 onChange={this.handleChange}
-                                placeholder="First Name" />
-                            {this.state.errors.firstNameError ? <p>{this.state.errors.firstNameError}</p> : null}
+                                placeholder={this.state.errors.firstNameError
+                                    ? this.state.errors.firstNameError
+                                    : "First Name"} />
                         </div>
                         <div className="lastName">
                             <label htmlFor="lastName">Last Name</label>
@@ -104,8 +106,9 @@ class Form extends React.Component {
                                 id="lastName"
                                 value={this.state.lastName}
                                 onChange={this.handleChange}
-                                placeholder="Last Name" />
-                            {this.state.errors.lastNameError ? <p>{this.state.errors.lastNameError}</p> : null}
+                                placeholder={this.state.errors.lastNameError
+                                    ? this.state.errors.lastNameError
+                                    : "Last Name"} />
                         </div>
                         <div className="email">
                             <label htmlFor="email">Email</label>
@@ -119,7 +122,7 @@ class Form extends React.Component {
                             {this.state.errors.emailError ? <p>{this.state.errors.emailError}</p> : null}
                         </div>
                         <div className="phoneNumber">
-                            <label htmlFor="phoneNumber">PhoneNumber</label>
+                            <label htmlFor="phoneNumber">Telephone</label>
                             <input
                                 name="phoneNumber"
                                 id="phoneNumber"
@@ -144,61 +147,8 @@ class Form extends React.Component {
                                 <option value="Antarctica">Antarctica</option>
                             </select>
                         </div>
-                        <div className="sex">
-                            <label htmlFor="male">Male</label>
-                            <input
-                                name="sex"
-                                id="male"
-                                value="Male"
-                                onChange={this.handleChange}
-                                type="radio" />
-                            <label htmlFor="female">Female</label>
-                            <input
-                                name="sex"
-                                id="female"
-                                value="Female"
-                                onChange={this.handleChange}
-                                type="radio" />
-                        </div>
-                        <div className="checkbox">
-                            <label htmlFor="sport">Sport</label>
-                            <input
-                                type="checkbox"
-                                id="sport"
-                                value="sport"
-                                onChange={this.handleChange}
-                                checked={this.state.activities.sport} />
-                            <label htmlFor="coding">Coding</label>
-                            <input
-                                type="checkbox"
-                                id="coding"
-                                value="coding"
-                                onChange={this.handleChange}
-                                checked={this.state.activities.coding} />
-                            <label htmlFor="videogames">Videogames</label>
-                            <input
-                                type="checkbox"
-                                id="videogames"
-                                value="videogames"
-                                onChange={this.handleChange}
-                                checked={this.state.activities.videogames} />
-                            <label htmlFor="art">Art</label>
-                            <input
-                                type="checkbox"
-                                id="art"
-                                value="art"
-                                onChange={this.handleChange}
-                                checked={this.state.activities.art} />
-                            <label htmlFor="music">Music</label>
-                            <input
-                                type="checkbox"
-                                id="music"
-                                value="music"
-                                onChange={this.handleChange}
-                                checked={this.state.activities.music} />
-                        </div>
                         <div className="date">
-                            <label htmlFor="date">Today date</label>
+                            <label htmlFor="date">Date</label>
                             <input
                                 name="date"
                                 id="date"
@@ -207,7 +157,62 @@ class Form extends React.Component {
                                 type="date" />
                             {this.state.errors.dateError ? <p>{this.state.errors.dateError}</p> : null}
                         </div>
-                        <button type="submit">Submit</button>
+                        <fieldset className="gender">
+                            <legend>Gender</legend>
+                            <input
+                                name="sex"
+                                id="male"
+                                value="Male"
+                                onChange={this.handleChange}
+                                type="radio" />
+                            <label htmlFor="male">Male</label>
+                            <input
+                                name="sex"
+                                id="female"
+                                value="Female"
+                                onChange={this.handleChange}
+                                type="radio" />
+                            <label htmlFor="female">Female</label>
+                        </fieldset>
+                        <fieldset class="checkbox">
+                            <legend>Activities</legend>
+                            <input
+                                type="checkbox"
+                                id="sport"
+                                value="sport"
+                                onChange={this.handleChange}
+                                checked={this.state.activities.sport} />
+                            <label htmlFor="sport">Sport</label>
+                            <input
+                                type="checkbox"
+                                id="coding"
+                                value="coding"
+                                onChange={this.handleChange}
+                                checked={this.state.activities.coding} />
+                            <label htmlFor="coding">Coding</label>
+                            <input
+                                type="checkbox"
+                                id="videogames"
+                                value="videogames"
+                                onChange={this.handleChange}
+                                checked={this.state.activities.videogames} />
+                            <label htmlFor="videogames">Videogames</label>
+                            <input
+                                type="checkbox"
+                                id="art"
+                                value="art"
+                                onChange={this.handleChange}
+                                checked={this.state.activities.art} />
+                            <label htmlFor="art">Art</label>
+                            <input
+                                type="checkbox"
+                                id="music"
+                                value="music"
+                                onChange={this.handleChange}
+                                checked={this.state.activities.music} />
+                            <label htmlFor="music">Music</label>
+                        </fieldset>
+                        <button className="submitBtn" type="submit">Submit</button>
                     </form>
                 </div>
             </div>

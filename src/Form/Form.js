@@ -16,7 +16,47 @@ class Form extends React.Component {
             art: false,
             music: false
         },
-        date: ''
+        date: '',
+        errors: {
+            firstNameError: '',
+            lastNameError: '',
+            emailError: '',
+            phoneNumberError: '',
+            dateError: ''
+        }
+    };
+
+    validation = () => {
+
+        if (this.state.firstName.length < 1) {
+            this.setState({ errors: { firstNameError: 'Invalid Name' } });
+            return false;
+        } else if (this.state.lastName.length < 1) {
+            this.setState({ errors: { lastNameError: 'Invalid Surname' } });
+            return false;
+        }
+
+        if (!this.state.email.includes('@')) {
+            this.setState({ errors: { emailError: 'Invalid email, use @' } });
+            return false;
+        }
+
+        if (isNaN(parseInt(this.state.phoneNumber))) {
+            this.setState({ errors: { phoneNumberError: 'Invalid phone number' } });
+            return false;
+        }
+
+        if (this.state.sex === '') {
+            this.setState({ errors: { phoneNumberError: 'Invalid sex' } });
+            return false;
+        }
+
+        if (this.state.date === '') {
+            this.setState({ errors: { dateError: 'Invalid date' } });
+            return false;
+        }
+
+        return true;
     };
 
     handleChange = event => {
@@ -37,7 +77,8 @@ class Form extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
+        const isValid = this.validation();
+        if (isValid) { console.log(this.state) }
     };
 
     render() {
@@ -51,6 +92,9 @@ class Form extends React.Component {
                             onChange={this.handleChange}
                             placeholder="First Name" />
                     </label>
+                    {this.state.errors.firstNameError
+                        ? <p>{this.state.errors.firstNameError}</p>
+                        : null}
                     <label>
                         <input
                             name="lastName"
@@ -58,6 +102,9 @@ class Form extends React.Component {
                             onChange={this.handleChange}
                             placeholder="Last Name" />
                     </label>
+                    {this.state.errors.lastNameError
+                        ? <p>{this.state.errors.lastNameError}</p>
+                        : null}
                 </div>
                 <div>
                     <label>
@@ -67,6 +114,9 @@ class Form extends React.Component {
                             onChange={this.handleChange}
                             placeholder="Email" />
                     </label>
+                    {this.state.errors.emailError
+                        ? <p>{this.state.errors.emailError}</p>
+                        : null}
                     <label>
                         <input
                             name="phoneNumber"
@@ -74,6 +124,9 @@ class Form extends React.Component {
                             onChange={this.handleChange}
                             placeholder="Phone Number" />
                     </label>
+                    {this.state.errors.phoneNumberError
+                        ? <p>{this.state.errors.phoneNumberError}</p>
+                        : null}
                 </div>
                 <select
                     name='continent'
@@ -147,6 +200,9 @@ class Form extends React.Component {
                             onChange={this.handleChange}
                             type="date" />
                     </label>
+                    {this.state.errors.dateError
+                        ? <p>{this.state.errors.dateError}</p>
+                        : null}
                 </div>
                 <button type="submit">Submit</button>
             </form>

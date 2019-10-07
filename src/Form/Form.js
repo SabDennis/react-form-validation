@@ -1,6 +1,9 @@
 import React from "react";
 import './Form.css';
 
+const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+const phoneRegex = RegExp(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/);
+
 class Form extends React.Component {
 
     state = {
@@ -8,7 +11,7 @@ class Form extends React.Component {
         lastName: '',
         email: '',
         phoneNumber: '',
-        continent: '',
+        continent: 'Eurasia',
         sex: '',
         activities: {
             sport: false,
@@ -23,7 +26,7 @@ class Form extends React.Component {
             lastNameError: '',
             emailError: '',
             phoneNumberError: '',
-        }
+        },
     };
 
     validate = () => {
@@ -34,31 +37,32 @@ class Form extends React.Component {
         let dateError = '';
         let genderError = ''
 
-        if (!this.state.firstName) {
-            firstNameError = 'Invalid';
+        if (this.state.firstName.length < 3) {
+            firstNameError = 'Min. 3 characters required';
         }
 
-        if (!this.state.lastName) {
-            lastNameError = 'Invalid';
+        if (this.state.lastName.length < 3) {
+            lastNameError = 'Min. 3 characters required';
         }
 
-        if (!this.state.email.includes("@")) {
-            emailError = 'Invalid email, use @';
+        if (!emailRegex.test(this.state.email)) {
+            emailError = 'Example: john@gmail.com';
         }
 
-        if (!this.state.phoneNumber) {
-            phoneNumberError = 'Invalid phone number, use numbers';
+        if (!phoneRegex.test(this.state.phoneNumber)) {
+            phoneNumberError = 'Example: +7(910)165-75-23';
         }
 
-        if(!this.state.date) {
-            dateError = 'Invalid date';
+        if (!this.state.date) {
+            dateError = 'Invalid';
         }
 
-        if(!this.state.sex) {
-            genderError = 'Invalid gender';
+        if (!this.state.sex) {
+            genderError = 'Invalid';
         }
 
-        if (firstNameError || lastNameError || emailError || phoneNumberError || dateError || genderError) {
+        if (firstNameError || lastNameError || emailError
+            || phoneNumberError || dateError || genderError) {
             this.setState({
                 errors: {
                     firstNameError,
@@ -96,10 +100,7 @@ class Form extends React.Component {
 
         if (isValid) {
             console.log(this.state);
-        } else {
-            console.log("INVALID");
         }
-
     };
 
     render() {

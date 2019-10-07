@@ -9,7 +9,7 @@
 }
 
 .form-container {
-    width: 500px;
+    width: 650px;
     display: flex;
     flex-direction: column;
     padding: 15px 35px;
@@ -57,6 +57,10 @@ form {
     margin-right: 1%;
 }
 
+.gender, .checkbox {
+    width: 100%;
+}
+
 h1 {
     text-align: center;
     width: 100%;
@@ -92,24 +96,9 @@ fieldset {
     color: #222;
 }
 
-.gender, .checkbox {
-    width: 100%;
-}
-
 select {
     color: #222;
 }
-
-.checkbox label {
-    display: inline-block;
-    padding-right: 10px;
-    white-space: nowrap; 
-    vertical-align: middle;
-}
-
-.checkbox input {
-    vertical-align: middle;
-  }
 
 /* button */
 
@@ -131,4 +120,104 @@ select {
     color: #5FA8D3;
     background-color: #fff;
     border: 2px solid #5FA8D3;
+}
+
+/* custom radio buttons */
+
+.customRadio,
+.customCheckbox {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.customRadio input, 
+.customCheckbox input  {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    cursor: pointer;
+}
+
+.checkmarkRadio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border: 1px solid #5FA8D3;
+    border-radius: 50%;
+}
+
+.customRadio:hover input ~ .checkmarkRadio, 
+.customCheckbox:hover input ~ .checkmarkBox {
+    background-color: #ccc;
+}
+
+.customRadio input:checked ~ .checkmarkRadio,
+.customCheckbox input:checked ~ .checkmarkBox {
+    background-color: #2196F3;
+}
+
+.checkmarkRadio:after,
+.checkmarkBox::after {
+    content: "";
+    display: none;
+    position: absolute;
+}
+
+.customRadio input:checked ~ .checkmarkRadio:after,
+.customCheckbox input:checked ~ .checkmarkBox:after {
+    display: block;
+}
+
+.customRadio .checkmarkRadio:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* custom checkboxes */
+
+.checkbox label {
+    display: inline-block;
+    padding-right: 10px;
+    white-space: nowrap; 
+    vertical-align: middle;
+}
+
+.checkbox input {
+    vertical-align: middle;
+  }
+
+.checkmarkBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border: 1px solid #5FA8D3;
+    background-color: #eee;
+    border-radius: 7px;
+}
+
+.customCheckbox .checkmarkBox:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
 }

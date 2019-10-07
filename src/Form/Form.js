@@ -150,58 +150,72 @@ class Form extends React.Component {
                         </div>
                         <fieldset className="gender">
                             <legend>Gender</legend>
+                            <label htmlFor="male" className="customRadio">Male
+                                <input
+                                    name="sex"
+                                    id="male"
+                                    value="Male"
+                                    onChange={this.handleChange}
+                                    type="radio" />
+                                <span className="checkmarkRadio"></span>
+                            </label>
+                            <label htmlFor="female" className="customRadio">Female
                             <input
-                                name="sex"
-                                id="male"
-                                value="Male"
-                                onChange={this.handleChange}
-                                type="radio" />
-                            <label htmlFor="male">Male</label>
-                            <input
-                                name="sex"
-                                id="female"
-                                value="Female"
-                                onChange={this.handleChange}
-                                type="radio" />
-                            <label htmlFor="female">Female</label>
+                                    name="sex"
+                                    id="female"
+                                    value="Female"
+                                    onChange={this.handleChange}
+                                    type="radio" />
+                                <span className="checkmarkRadio"></span>
+                            </label>
                         </fieldset>
                         <fieldset className="checkbox">
                             <legend>Activities</legend>
+                            <label htmlFor="sport" className="customCheckbox">Sport
                             <input
-                                type="checkbox"
-                                id="sport"
-                                value="sport"
-                                onChange={this.handleChange}
-                                checked={this.state.activities.sport} />
-                            <label htmlFor="sport">Sport</label>
+                                    type="checkbox"
+                                    id="sport"
+                                    value="sport"
+                                    onChange={this.handleChange}
+                                    checked={this.state.activities.sport} />
+                                    <span className="checkmarkBox"></span>
+                            </label>
+                            <label htmlFor="coding" className="customCheckbox">Coding
                             <input
-                                type="checkbox"
-                                id="coding"
-                                value="coding"
-                                onChange={this.handleChange}
-                                checked={this.state.activities.coding} />
-                            <label htmlFor="coding">Coding</label>
+                                    type="checkbox"
+                                    id="coding"
+                                    value="coding"
+                                    onChange={this.handleChange}
+                                    checked={this.state.activities.coding} />
+                                    <span className="checkmarkBox"></span>
+                            </label>
+                            <label htmlFor="videogames" className="customCheckbox">Videogames
                             <input
-                                type="checkbox"
-                                id="videogames"
-                                value="videogames"
-                                onChange={this.handleChange}
-                                checked={this.state.activities.videogames} />
-                            <label htmlFor="videogames">Videogames</label>
+                                    type="checkbox"
+                                    id="videogames"
+                                    value="videogames"
+                                    onChange={this.handleChange}
+                                    checked={this.state.activities.videogames} />
+                                    <span className="checkmarkBox"></span>
+                            </label>
+                            <label htmlFor="art" className="customCheckbox">Art
                             <input
-                                type="checkbox"
-                                id="art"
-                                value="art"
-                                onChange={this.handleChange}
-                                checked={this.state.activities.art} />
-                            <label htmlFor="art">Art</label>
+                                    type="checkbox"
+                                    id="art"
+                                    value="art"
+                                    onChange={this.handleChange}
+                                    checked={this.state.activities.art} />
+                                    <span className="checkmarkBox"></span>
+                            </label>
+                            <label htmlFor="music" className="customCheckbox">Music
                             <input
-                                type="checkbox"
-                                id="music"
-                                value="music"
-                                onChange={this.handleChange}
-                                checked={this.state.activities.music} />
-                            <label htmlFor="music">Music</label>
+                                    type="checkbox"
+                                    id="music"
+                                    value="music"
+                                    onChange={this.handleChange}
+                                    checked={this.state.activities.music} />
+                                    <span className="checkmarkBox"></span>
+                            </label>
                         </fieldset>
                         <button className="submitBtn" type="submit">Submit</button>
                     </form>

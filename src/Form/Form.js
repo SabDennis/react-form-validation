@@ -1,33 +1,35 @@
 import React from "react";
 import './Form.css';
 
+const defaultState = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    continent: 'Eurasia',
+    sex: '',
+    activities: {
+        sport: false,
+        coding: false,
+        videogames: false,
+        art: false,
+        music: false
+    },
+    date: '',
+    errors: {
+        firstNameError: '',
+        lastNameError: '',
+        emailError: '',
+        phoneNumberError: '',
+    },
+};
+
 const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
 const phoneRegex = RegExp(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/);
 
 class Form extends React.Component {
 
-    state = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: '',
-        continent: 'Eurasia',
-        sex: '',
-        activities: {
-            sport: false,
-            coding: false,
-            videogames: false,
-            art: false,
-            music: false
-        },
-        date: '',
-        errors: {
-            firstNameError: '',
-            lastNameError: '',
-            emailError: '',
-            phoneNumberError: '',
-        },
-    };
+    state = defaultState;
 
     validate = () => {
         let firstNameError = '';
@@ -99,7 +101,9 @@ class Form extends React.Component {
         const isValid = this.validate();
 
         if (isValid) {
-            console.log(this.state);
+            this.setState(defaultState);
+        } else {
+            console.error("INVALID");
         }
     };
 
@@ -177,6 +181,7 @@ class Form extends React.Component {
                         <div className="date">
                             <label htmlFor="date">Date</label>
                             <input
+                                min="2019-10-07"
                                 className={this.state.errors.dateError ? 'error' : ''}
                                 name="date"
                                 id="date"

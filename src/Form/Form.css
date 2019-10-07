@@ -228,3 +228,9 @@ select {
     border: 1px solid tomato;
     background-color: rgba(255, 0, 0, 0.200);
 }
+
+.errorRadio {
+    border : 1px solid tomato;
+    background-color: rgba(255, 0, 0, 0.200);
+    width: 100%;
+}

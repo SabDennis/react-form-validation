@@ -8,7 +8,7 @@ class Form extends React.Component {
         lastName: '',
         email: '',
         phoneNumber: '',
-        continent: 'Eurasia',
+        continent: '',
         sex: '',
         activities: {
             sport: false,
@@ -23,8 +23,7 @@ class Form extends React.Component {
             lastNameError: '',
             emailError: '',
             phoneNumberError: '',
-        },
-        errorClass: ''
+        }
     };
 
     validate = () => {
@@ -32,6 +31,8 @@ class Form extends React.Component {
         let lastNameError = '';
         let emailError = '';
         let phoneNumberError = '';
+        let dateError = '';
+        let genderError = ''
 
         if (!this.state.firstName) {
             firstNameError = 'Invalid';
@@ -49,13 +50,23 @@ class Form extends React.Component {
             phoneNumberError = 'Invalid phone number, use numbers';
         }
 
-        if (firstNameError || lastNameError || emailError || phoneNumberError) {
+        if(!this.state.date) {
+            dateError = 'Invalid date';
+        }
+
+        if(!this.state.sex) {
+            genderError = 'Invalid gender';
+        }
+
+        if (firstNameError || lastNameError || emailError || phoneNumberError || dateError || genderError) {
             this.setState({
                 errors: {
                     firstNameError,
                     lastNameError,
                     emailError,
-                    phoneNumberError
+                    phoneNumberError,
+                    dateError,
+                    genderError
                 }
             });
             return false;
@@ -100,9 +111,7 @@ class Form extends React.Component {
                         <div className="firstName">
                             <label htmlFor="firstName">First Name</label>
                             <input
-                                className={this.state.errors.firstNameError
-                                    ? 'error'
-                                    : ''}
+                                className={this.state.errors.firstNameError ? 'error' : ''}
                                 name="firstName"
                                 id="firstName"
                                 value={this.state.firstName}
@@ -114,9 +123,7 @@ class Form extends React.Component {
                         <div className="lastName">
                             <label htmlFor="lastName">Last Name</label>
                             <input
-                                className={this.state.errors.lastNameError
-                                    ? 'error'
-                                    : ''}
+                                className={this.state.errors.lastNameError ? 'error' : ''}
                                 name="lastName"
                                 id="lastName"
                                 value={this.state.lastName}
@@ -128,9 +135,7 @@ class Form extends React.Component {
                         <div className="email">
                             <label htmlFor="email">Email</label>
                             <input
-                                className={this.state.errors.emailError
-                                    ? 'error'
-                                    : ''}
+                                className={this.state.errors.emailError ? 'error' : ''}
                                 name="email"
                                 id="email"
                                 type="email"
@@ -143,9 +148,7 @@ class Form extends React.Component {
                         <div className="phoneNumber">
                             <label htmlFor="phoneNumber">Telephone</label>
                             <input
-                                className={this.state.errors.phoneNumberError
-                                    ? 'error'
-                                    : ''}
+                                className={this.state.errors.phoneNumberError ? 'error' : ''}
                                 name="phoneNumber"
                                 id="phoneNumber"
                                 value={this.state.phoneNumber}
@@ -173,13 +176,14 @@ class Form extends React.Component {
                         <div className="date">
                             <label htmlFor="date">Date</label>
                             <input
+                                className={this.state.errors.dateError ? 'error' : ''}
                                 name="date"
                                 id="date"
                                 value={this.state.date}
                                 onChange={this.handleChange}
                                 type="date" />
                         </div>
-                        <fieldset className="gender">
+                        <fieldset className={this.state.errors.genderError ? 'errorRadio' : 'gender'}>
                             <legend>Gender</legend>
                             <label htmlFor="male" className="customRadio">Male
                                 <input

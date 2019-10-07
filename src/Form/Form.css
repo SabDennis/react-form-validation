@@ -221,3 +221,10 @@ select {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+/* errors */
+
+.error {
+    border: 1px solid tomato;
+    background-color: rgba(255, 0, 0, 0.200);
+}

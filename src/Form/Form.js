@@ -8,7 +8,7 @@ class Form extends React.Component {
         lastName: '',
         email: '',
         phoneNumber: '',
-        continent: 'Earth',
+        continent: 'Eurasia',
         sex: '',
         activities: {
             sport: false,
@@ -23,29 +23,43 @@ class Form extends React.Component {
             lastNameError: '',
             emailError: '',
             phoneNumberError: '',
-        }
+        },
+        errorClass: ''
     };
 
-    validation = () => {
+    validate = () => {
+        let firstNameError = '';
+        let lastNameError = '';
+        let emailError = '';
+        let phoneNumberError = '';
 
-        if (this.state.firstName.length < 1) {
-            this.setState({ errors: { firstNameError: 'Invalid Name' } });
-            return false;
-        } else if (this.state.lastName.length < 1) {
-            this.setState({ errors: { lastNameError: 'Invalid Surname' } });
-            return false;
+        if (!this.state.firstName) {
+            firstNameError = 'Invalid';
         }
 
-        if (!this.state.email.includes('@')) {
-            this.setState({ errors: { emailError: 'Invalid email, use @' } });
-            return false;
+        if (!this.state.lastName) {
+            lastNameError = 'Invalid';
         }
 
-        if (isNaN(parseInt(this.state.phoneNumber))) {
-            this.setState({ errors: { phoneNumberError: 'Invalid phone number' } });
-            return false;
+        if (!this.state.email.includes("@")) {
+            emailError = 'Invalid email, use @';
         }
 
+        if (!this.state.phoneNumber) {
+            phoneNumberError = 'Invalid phone number, use numbers';
+        }
+
+        if (firstNameError || lastNameError || emailError || phoneNumberError) {
+            this.setState({
+                errors: {
+                    firstNameError,
+                    lastNameError,
+                    emailError,
+                    phoneNumberError
+                }
+            });
+            return false;
+        };
         return true;
     };
 
@@ -67,8 +81,14 @@ class Form extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const isValid = this.validation();
-        if (isValid) { console.log(this.state) }
+        const isValid = this.validate();
+
+        if (isValid) {
+            console.log(this.state);
+        } else {
+            console.log("INVALID");
+        }
+
     };
 
     render() {
@@ -80,28 +100,37 @@ class Form extends React.Component {
                         <div className="firstName">
                             <label htmlFor="firstName">First Name</label>
                             <input
+                                className={this.state.errors.firstNameError
+                                    ? 'error'
+                                    : ''}
                                 name="firstName"
                                 id="firstName"
                                 value={this.state.firstName}
                                 onChange={this.handleChange}
                                 placeholder={this.state.errors.firstNameError
                                     ? this.state.errors.firstNameError
-                                    : "John"} />
+                                    : ""} />
                         </div>
                         <div className="lastName">
                             <label htmlFor="lastName">Last Name</label>
                             <input
+                                className={this.state.errors.lastNameError
+                                    ? 'error'
+                                    : ''}
                                 name="lastName"
                                 id="lastName"
                                 value={this.state.lastName}
                                 onChange={this.handleChange}
                                 placeholder={this.state.errors.lastNameError
                                     ? this.state.errors.lastNameError
-                                    : "Locke"} />
+                                    : ""} />
                         </div>
                         <div className="email">
                             <label htmlFor="email">Email</label>
                             <input
+                                className={this.state.errors.emailError
+                                    ? 'error'
+                                    : ''}
                                 name="email"
                                 id="email"
                                 type="email"
@@ -109,11 +138,14 @@ class Form extends React.Component {
                                 onChange={this.handleChange}
                                 placeholder={this.state.errors.emailError
                                     ? this.state.errors.emailError
-                                    : "johnlocke@example.com"} />
+                                    : ""} />
                         </div>
                         <div className="phoneNumber">
                             <label htmlFor="phoneNumber">Telephone</label>
                             <input
+                                className={this.state.errors.phoneNumberError
+                                    ? 'error'
+                                    : ''}
                                 name="phoneNumber"
                                 id="phoneNumber"
                                 value={this.state.phoneNumber}
@@ -121,7 +153,7 @@ class Form extends React.Component {
                                 type="tel"
                                 placeholder={this.state.errors.phoneNumberError
                                     ? this.state.errors.phoneNumberError
-                                    : "+7 (945) 456-75-24"} />
+                                    : ""} />
                         </div>
                         <div className="continent">
                             <label htmlFor="continent">Continent</label>
@@ -132,7 +164,7 @@ class Form extends React.Component {
                                 onChange={this.handleChange}>
                                 <option value="Eurasia">Eurasia</option>
                                 <option value="Africa">Africa</option>
-                                <option value="America">North America</option>
+                                <option value="North America">North America</option>
                                 <option value="South America">South America</option>
                                 <option value="Australia">Australia</option>
                                 <option value="Antarctica">Antarctica</option>
@@ -145,8 +177,7 @@ class Form extends React.Component {
                                 id="date"
                                 value={this.state.date}
                                 onChange={this.handleChange}
-                                type="date"
-                                required />
+                                type="date" />
                         </div>
                         <fieldset className="gender">
                             <legend>Gender</legend>
@@ -178,7 +209,7 @@ class Form extends React.Component {
                                     value="sport"
                                     onChange={this.handleChange}
                                     checked={this.state.activities.sport} />
-                                    <span className="checkmarkBox"></span>
+                                <span className="checkmarkBox"></span>
                             </label>
                             <label htmlFor="coding" className="customCheckbox">Coding
                             <input
@@ -187,7 +218,7 @@ class Form extends React.Component {
                                     value="coding"
                                     onChange={this.handleChange}
                                     checked={this.state.activities.coding} />
-                                    <span className="checkmarkBox"></span>
+                                <span className="checkmarkBox"></span>
                             </label>
                             <label htmlFor="videogames" className="customCheckbox">Videogames
                             <input
@@ -196,7 +227,7 @@ class Form extends React.Component {
                                     value="videogames"
                                     onChange={this.handleChange}
                                     checked={this.state.activities.videogames} />
-                                    <span className="checkmarkBox"></span>
+                                <span className="checkmarkBox"></span>
                             </label>
                             <label htmlFor="art" className="customCheckbox">Art
                             <input
@@ -205,7 +236,7 @@ class Form extends React.Component {
                                     value="art"
                                     onChange={this.handleChange}
                                     checked={this.state.activities.art} />
-                                    <span className="checkmarkBox"></span>
+                                <span className="checkmarkBox"></span>
                             </label>
                             <label htmlFor="music" className="customCheckbox">Music
                             <input
@@ -214,7 +245,7 @@ class Form extends React.Component {
                                     value="music"
                                     onChange={this.handleChange}
                                     checked={this.state.activities.music} />
-                                    <span className="checkmarkBox"></span>
+                                <span className="checkmarkBox"></span>
                             </label>
                         </fieldset>
                         <button className="submitBtn" type="submit">Submit</button>

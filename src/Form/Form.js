@@ -102,6 +102,7 @@ class Form extends React.Component {
 
         if (isValid) {
             this.setState(defaultState);
+            console.log(this.state);
         } else {
             console.error("INVALID");
         }
